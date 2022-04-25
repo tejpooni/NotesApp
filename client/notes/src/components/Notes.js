@@ -1,4 +1,6 @@
 import React from 'react';
+// import LoginPage from './LoginPage';
+// import {Navigate} from 'react-router-dom';
 // import { BrowserRouter as Route, Routes, Link } from "react-router-dom";
 
 const heading = {
@@ -9,8 +11,9 @@ const heading = {
   }
 
 function Notes(){
+    
     return(
-        <div>
+        <div style={heading}>
            Tej's Notes App 
         </div>
     );

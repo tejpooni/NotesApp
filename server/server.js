@@ -12,8 +12,8 @@ app.use(express());
     {
         origin: 'http://localhost:3000',
         credentials: true,
-        withCredentials: true,
-        allowedHeaders : '*',
+        // withCredentials: true,
+        // allowedHeaders : '*',
         // origins: '*',
         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
     }
@@ -83,6 +83,7 @@ dbConn.connect();
 
 app.post('/login', cors(), (req,res) =>{
 
+    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
     console.log("validating if passwords match")
     const username= req.body.username;
     const password= req.body.password;
@@ -113,6 +114,7 @@ app.post('/login', cors(), (req,res) =>{
 //query to insert new user to db
 app.post('/register', cors(), (req,res)=>{
 
+    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
     console.log("got the call********");
     const username= req.body.username;
     const password= req.body.password;
