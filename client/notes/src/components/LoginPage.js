@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState } from "react";
 import Axios from "axios";
-// import App from '../App';
-import Notes from './Notes'
-// import {Navigate } from 'react-router-dom';
+// import data from '../data/data.json';
+// import ToDoList from './ToDoList';
+// import ToDoForm from './ToDoForm';
+
+import TaskList from './TaskSys/taskList';
 
 //styles
 
@@ -36,6 +38,28 @@ const regLogButton = {
 }
 
 const LoginPage = () =>{
+
+  // const [ toDoList, setToDoList ] = useState(data);//try to do this with local storage or json via sql
+
+  // const handleToggle = (id) => {
+  //   let mapped = toDoList.map(task => {
+  //     return task.id === id ? { ...task, complete: !task.complete } : { ...task};
+  //   });
+  //   setToDoList(mapped);
+  // }
+
+  // const handleFilter = () => {
+  //   let filtered = toDoList.filter(task => {
+  //     return !task.complete;
+  //   });
+  //   setToDoList(filtered);
+  // }
+
+  // const addTask = (userInput) => {
+  //   let copy = [...toDoList];
+  //   copy = [...copy, { id: toDoList.length + 1, task: userInput, complete: false }];
+  //   setToDoList(copy);
+  // }
 
  
   const[ usernameLogin, setUsernameLogin] = useState('')
@@ -97,45 +121,16 @@ const LoginPage = () =>{
      </div > 
     )
   }
+
   else{
     return(
-      <div>
-        <Notes/>
+      <div> 
+        {/* <ToDoList toDoList={toDoList} handleToggle={handleToggle} handleFilter={handleFilter}/>
+        <ToDoForm addTask={addTask}/> */}
+        <TaskList/>
       </div>
     )
   }
-  
-        // return(
-        //   <div>
-        //    <div styles={background} className = "Login">
-        //        <h1 style = {heading}>Login</h1>
-        //        <label style = {heading}>       </label>
-        //        <input 
-        //              style = {inputBarsLogin}
-        //              type = "text" 
-        //              placeholder = "Username..."
-        //              onChange = {(e)=> {setUsernameLogin(e.target.value);}}
-        //        />
-        //        <br/>
-        //        <input 
-        //              style = {inputBarsLogin}
-        //              type = "password" 
-        //              placeholder = "Password..."
-        //              onChange = {(e)=> {setPasswordLogin(e.target.value);}}
-        //        />
-        //        <br/>
-        //        <button 
-        //              style = {regLogButton}
-        //              onClick = {login}>Login
-        //        </button>
-             
-        //      </div>
-
-            
-
-        //    <h1>{loginStatus}</h1>
-        //  </div > 
-        // )
 
 };
 export default LoginPage;

@@ -18,10 +18,7 @@ app.use(express());
         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
     }
  ));
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//     next();
-//   });
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -33,7 +30,7 @@ app.use(bodyParser.urlencoded({
 //     return res.send({ error: true, message: 'hello' })
 // });
 
-// connection configurations
+// db connection configurations 
 const dbConn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -41,44 +38,12 @@ const dbConn = mysql.createConnection({
     database: 'Users'
 });
 
-// connect to database
 dbConn.connect();
 
-// app.get('/blah', cors(),function (req, res) {
-//     // console.log("username="+req.query.name+" password="+req.query.password);
-//      console.log("got a request for username = ")
-//     var query ="SELECT * FROM userinfo";
-//     // console.log(query)
-//     dbConn.query(query, function (error, results, fields) {
-//         if (error) throw error;
-//         console.log(results)
-//         return res.send({
-//             data: results
-//         })
-//     });
-    
-// });
-
-
-// app.get('/user', cors(),function (req, res) {
-//     // console.log("username="+req.query.name+" password="+req.query.password);
-//      console.log("got a request for username = ")
-//     var query ="SELECT * FROM userinfo";
-//     // console.log(query)
-//     dbConn.query(query, function (error, results, fields) {
-//         if (error) throw error;
-
-//         console.log(results)
-
-//         return res.send({
-//             data: results
-//         })
-//     });
-    
-// });
 
 //res server -> client
 //req client -> server 
+
 
 
 app.post('/login', cors(), (req,res) =>{
@@ -144,68 +109,7 @@ app.post('/register', cors(), (req,res)=>{
 
     });
 
-    // dbConn.query(
-    // "insert into userinfo (username, password) values (?,?)", 
-    // [username,password], 
-    // (err,result) =>{
-    //     // console.log(err);
-    //     if(err){
-    //         res.send({err:err});
-    //     }
-    //     else if(result.length != 0){
-    //         dbConn.query("SELECT username FROM userinfo WHERE username = '"+ user +"'",[username], function(err, result2 ){
-    //             if(err){
-    //                 res.send({err:err});
-    //             }
-    //             else if(result2.length == 0){
-    //                 //new user logic
-    //             }    
-    //             else{  
-    //             //existing user, redirect to another page 
-    //             }
-    //         })
-    //     }
-    // });
-    // res.send("200")
 });
-
-
-
-//res server -> client
-//req client -> server 
-
-// Retrieve all users
-// app.get('/users', function (req, res) {
-//     console.log("username="+req.query.name+" password="+req.query.password);
-//     // var user = req.query.name; 
-//     var col = "tej";
-//     console.log("got a request for username = "+col)
-//     var query ="SELECT password FROM userinfo where username='"+col+"'";
-//     console.log(query)
-//     dbConn.query(query, function (error, results, fields) {
-//         if (error) throw error;
-//         console.log(results)
-//         console.log(fields)
-
-//         if(results[0].password != req.query.password){
-//             return res.send({
-//                 error: false
-//             })
-//         }
-//         else{
-//             return res.send({
-//                 error:true
-//             })
-//         }
-
-//         console.log(results[0].password);
-//         return res.send(
-//             { error: false, 
-//                data: results, message: 'users list.' });
-//     });
-    
-// });
-
 
 
 app.listen(3001, function () {
