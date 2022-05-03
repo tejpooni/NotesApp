@@ -68,6 +68,7 @@ app.post('/login', cors(), (req,res) =>{
         else if((result[0].username == username) && (result[0].password == password)){
             res.send(result)
             res.statusCode=200
+            // res.redirect("/tasks");
             status = "success";
         }
      
@@ -142,12 +143,24 @@ app.post('/addTask',(req,res)=>{
 })
 
 app.delete('/deleteTask/:taskId',(req,res)=>{
-    // console.log(req.params.taskId)
-    var deleteQuery = `delete from users.tasks where (taskId=${req.params.taskId})`
-    dbConn.query(deleteQuery,(err)=>{
-        if(err){res.send({err:err})}
-        else{console.log("deleted successfully")}
-    })
+    console.log(req.params.taskId)
+    // var idTask = [];
+    // idTask.push(String(req.params.task));
+    // console.log(idTask);
+
+    var deleteQuery = `delete from tasks where (taskId=${req.params.taskId})`
+    // var deleteQuery ='DELETE FROM hotel WHERE idTask = ?';
+    dbConn.query(deleteQuery,(err, result) => {
+        // res.status(200).end();
+        if(err) {
+            // res.status(200).json({ message: 'The item got successfully deleted', error: false });
+            console.log('error');
+            res.send("error")
+        } else {
+            // res.status(500).json({message : 'Oops and error occurred', error : true});
+            console.log('successfully deleted');
+            res.send("success")
+    }})
 })
 
 app.listen(3001, function () {
