@@ -111,6 +111,44 @@ app.post('/register', cors(), (req,res)=>{
 
 });
 
+//API Routes for the task manager list/add/delete
+app.get('/tasks',(req,res)=>{
+    // res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+
+    var getTaskQuery = 'select * from tasks'
+    dbConn.query(getTaskQuery,(err,result)=>{
+        if(err){
+            res.send({err:err})
+        }
+        else{
+            res.send( result)
+        }
+    })
+})
+
+app.post('/addTask',(req,res)=>{
+    // res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+
+    // console.log(req.body)
+    var addTaskQuery = `insert into tasks (task) values ('${req.body.task}')`
+    dbConn.query(addTaskQuery,(err)=>{
+        if(err){
+            res.send({err:err});
+        }
+        else{
+            res.send("task has been added");
+        }
+    })
+})
+
+app.delete('/deleteTask/:taskId',(req,res)=>{
+    // console.log(req.params.taskId)
+    var deleteQuery = `delete from users.tasks where (taskId=${req.params.taskId})`
+    dbConn.query(deleteQuery,(err)=>{
+        if(err){res.send({err:err})}
+        else{console.log("deleted successfully")}
+    })
+})
 
 app.listen(3001, function () {
     console.log('Node app is running on port 3001');
