@@ -64,7 +64,7 @@ class TaskList extends React.Component{
                     <input value = {this.state.task} onChange = {e =>this.setState({task: e.target.value})} placeholder = "your tasks..."/>
                     <div>
                         <br/>
-                        <button className = "ui primary button basic" onClick= {()=>this.onSubmitClick()}>Submit</button>
+                        <button className = "ui primary button basic" onClick= {()=>this.onSubmitClick()}>Add Task</button>
                     </div>
                 </div>
                 <br/>

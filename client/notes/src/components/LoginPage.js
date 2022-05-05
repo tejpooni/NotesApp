@@ -1,10 +1,6 @@
 import React from 'react';
 import { useState } from "react";
 import Axios from "axios";
-// import data from '../data/data.json';
-// import ToDoList from './ToDoList';
-// import ToDoForm from './ToDoForm';
-
 import TaskList from './TaskSys/taskList';
 
 //styles
@@ -37,29 +33,8 @@ const regLogButton = {
 
 }
 
-const LoginPage = () =>{
+const LoginPage = (props) =>{
 
-  // const [ toDoList, setToDoList ] = useState(data);//try to do this with local storage or json via sql
-
-  // const handleToggle = (id) => {
-  //   let mapped = toDoList.map(task => {
-  //     return task.id === id ? { ...task, complete: !task.complete } : { ...task};
-  //   });
-  //   setToDoList(mapped);
-  // }
-
-  // const handleFilter = () => {
-  //   let filtered = toDoList.filter(task => {
-  //     return !task.complete;
-  //   });
-  //   setToDoList(filtered);
-  // }
-
-  // const addTask = (userInput) => {
-  //   let copy = [...toDoList];
-  //   copy = [...copy, { id: toDoList.length + 1, task: userInput, complete: false }];
-  //   setToDoList(copy);
-  // }
 
  
   const[ usernameLogin, setUsernameLogin] = useState('')
@@ -114,7 +89,7 @@ const LoginPage = () =>{
                  style = {regLogButton}
                  onClick = {login}>Login
            </button>
-         
+
          </div>
 
        <h1>{loginStatus}</h1>
@@ -125,8 +100,6 @@ const LoginPage = () =>{
   else{
     return(
       <div> 
-        {/* <ToDoList toDoList={toDoList} handleToggle={handleToggle} handleFilter={handleFilter}/>
-        <ToDoForm addTask={addTask}/> */}
         <TaskList/>
       </div>
     )
